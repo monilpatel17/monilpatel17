@@ -69,13 +69,31 @@ Flask/Oracle REST API for class scheduling serving 120k+ students and 4,500+ fac
 
 ---
 
-## Tools
+## Languages and Tools
 
-**Languages:** Rust, Go, C, C++, Python, Java, SQL
-**Systems:** TCP/IP, eBPF/XDP, async runtimes (Tokio), gRPC, concurrency
-**Data:** PostgreSQL, MongoDB, Neo4j, Redis, BigQuery, Apache Beam
-**Infra:** Docker, Kubernetes, Terraform, GCP (Cloud Run, Pub/Sub, Dataflow), AWS (ECS)
+**Languages**
+
+<img src="https://skillicons.dev/icons?i=rust,go,c,cpp,py,java,ts" />
+
+**Data & Infrastructure**
+
+<img src="https://skillicons.dev/icons?i=postgres,mongodb,redis,kafka,docker,kubernetes,terraform,gcp,aws,linux" />
+
+Also working with: Neo4j · Apache Beam / Dataflow · BigQuery · eBPF/XDP · gRPC · Tokio · Spring Boot · FastAPI
 
 ---
 
-[Portfolio](https://personal-website-chi-two-65.vercel.app) · [LinkedIn](https://linkedin.com/in/YOUR-HANDLE) · mpate207@asu.edu
+## GitHub Stats
+
+<img src="https://github-readme-stats.vercel.app/api?username=monilpatel17&show_icons=true&hide=stars,issues&include_all_commits=true&hide_border=true&theme=github_dark" height="165" />
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=monilpatel17&layout=compact&langs_count=8&hide_border=true&theme=github_dark&hide=html,css,jupyter%20notebook&exclude_repo=Photo-Gallery-Based-on-Machine-Learning-,Youtube-Data-Aggregator,NeuralNetwork-1,AspNet-Microservices,MicroCourier,Real-Time-On-Device-Image-Classification" height="165" />
+
+---
+
+## Connect With Me
+
+<a href="https://linkedin.com/in/YOUR-HANDLE"><img src="https://skillicons.dev/icons?i=linkedin" /></a>
+&nbsp;
+<a href="https://personal-website-chi-two-65.vercel.app"><img src="https://skillicons.dev/icons?i=vercel" /></a>
+
+mpate207@asu.edu
