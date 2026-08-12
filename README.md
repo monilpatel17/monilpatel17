@@ -5,25 +5,35 @@ I work mostly in Rust, Go, C++, and Python, and I'm most interested in distribut
 storage engines, and the networking layer.
 
 Previously built payments infrastructure at FinPay and graph-backed APIs at Grey Box.
-**Currently looking for a full-time backend or infrastructure role.**
 
 ---
 
 ## Systems built from scratch
 
 **[Raft Leader Election & Membership](https://github.com/monilpatel17/Raft-Leader-Election-Membership)** · Go
-Implementation of Raft leader election and cluster membership changes — [terms, election timeouts,
-split-vote handling, and joint consensus for reconfiguration]. Verified with [N] tests covering
-[partition / stale-leader / concurrent-election] scenarios.
+Leader election and cluster membership changes — randomized election timeouts drawn from
+[150ms, 300ms), one-vote-per-term enforcement, and split-vote resolution by backoff. Failover on a
+5-node cluster measures p50 173ms / p99 207ms (n=30), against a theoretical floor of 100ms. Seeded
+chaos testing across 24 seeds × 12 injected faults each audited ~14,800 invariant samples with zero
+split-brain events; a partitioned minority provably elects nobody, and the test asserts it.
 
 **[XDP Rate Limiter & L4 Load Balancer](https://github.com/monilpatel17/XDP-Rate-Limiter-L4-Load-Balancer)** · C (eBPF/XDP)
-Packet-level rate limiting and layer-4 load balancing running in the kernel datapath via XDP,
-before packets reach the network stack. [Token-bucket limiting with per-source state in BPF maps;
-consistent-hash backend selection.] Sustained [X] pps at [Y] on [hardware].
+Per-source token-bucket rate limiting and layer-4 load balancing in the kernel datapath, before
+packets reach the network stack. Rendezvous hashing over a 65537-slot table holds worst-case
+per-backend deviation to 0.0107% at 10 backends; removing a backend moves 10.191% of slots against
+a 9.999% floor, of which only 0.192% belonged to flows that weren't on it. 2,055 assertions on table
+properties plus 14 token-bucket accuracy checks, including 1,000-hour idle overflow and
+backwards-clock cases. Raw throughput is deliberately unmeasured and documented as such — the
+loader refuses to fall back to skb-mode silently, so generic-mode results can't be mistaken for
+native ones.
 
 **[Write-Ahead Log](https://github.com/monilpatel17/Write-ahead-log)** · C++
-Durable append-only log with [crash-consistent recovery, CRC-checked records, and segment rotation].
-Correctness validated by [crash-injection / fsync-fault tests]. [Throughput number.]
+Durable append-only log with crash-consistent recovery and CRC-checked records. Group commit lifts
+throughput from 9,056 appends/s (fsync per write, p50 104µs) to 701,720/s at p50 0.50µs — 77.5× —
+and the write-up works through why a 10ms time-based window *loses* to N=100 batching at 64 KiB
+records. Validated by 500 crash-injection cycles per policy that truncate or bit-flip the log past
+the durability point: 0 committed records lost across 320,000+ commits, with 562 genuinely torn
+frames detected and rejected.
 
 **[Redis-Like In-Memory Key-Value Store](https://github.com/monilpatel17/Redis-Rust)** · Rust, Tokio
 TCP key-value server on the Tokio async runtime with RESP protocol framing and a task-per-connection
@@ -81,14 +91,6 @@ Flask/Oracle REST API for class scheduling serving 120k+ students and 4,500+ fac
 
 Also working with: Neo4j · Apache Beam / Dataflow · BigQuery · eBPF/XDP · gRPC · Tokio · Spring Boot · FastAPI
 
----
-
-## GitHub Stats
-
-<img src="https://github-readme-stats.vercel.app/api?username=monilpatel17&show_icons=true&hide=stars,issues&include_all_commits=true&hide_border=true&theme=github_dark" height="165" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=monilpatel17&layout=compact&langs_count=8&hide_border=true&theme=github_dark&hide=html,css,jupyter%20notebook&exclude_repo=Photo-Gallery-Based-on-Machine-Learning-,Youtube-Data-Aggregator,NeuralNetwork-1,AspNet-Microservices,MicroCourier,Real-Time-On-Device-Image-Classification" height="165" />
-
----
 
 ## Connect With Me
 
@@ -96,4 +98,4 @@ Also working with: Neo4j · Apache Beam / Dataflow · BigQuery · eBPF/XDP · gR
 &nbsp;
 <a href="https://personal-website-chi-two-65.vercel.app"><img src="https://skillicons.dev/icons?i=vercel" /></a>
 
-mpate207@asu.edu
+monilapatel1989@gmail.com
