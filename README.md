@@ -1,9 +1,8 @@
 # Monil Patel
 
 **Backend & systems engineer.** CS, Arizona State University (2026).
-Rust · Go · C++ · Python — distributed systems, storage engines, kernel networking.
+Rust · Go · C++ · Python - distributed systems, storage engines, kernel networking.
 
-🔍 **Looking for a full-time backend / infrastructure role.**
 
 ---
 
